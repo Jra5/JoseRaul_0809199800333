@@ -53,6 +53,20 @@ router.get('/:id', (req, res, next) => {
 });
 
 
+//POST
+router.post('/', (req, res, next) => {
+    var newReceta = Object.assign(
+        {},
+        EstructuraReceta,{
+            id:uuid()},
+            req.body
+    );
+    ColeccionReceta.push(newReceta);
+    res.status(200).json(newReceta);
+});
+
+
+
 
 
 module.exports = router;
