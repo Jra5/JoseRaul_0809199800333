@@ -66,6 +66,21 @@ router.post('/', (req, res, next) => {
 });
 
 
+//PUT
+router.put('/:id', (req, res, next) => {
+    var id = req.params.id;
+    var ModificarReceta = {};
+    var OriginalReceta = {};
+
+    ColeccionReceta = ColeccionReceta.map( (e, i) => {
+        if (e.id === id){
+            OriginalReceta = Object.assign({}, e);
+            return ModificarReceta = Object.assign({}, e, req.body);
+        }
+        return e;
+    });
+    res.status(200).json({ o: OriginalReceta, m:ModificarReceta});
+});
 
 
 
